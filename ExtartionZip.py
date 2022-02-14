@@ -49,9 +49,9 @@ def taxonomy(file, level):
                 print(" "*level_dir+' '+str(level_dir-1)+'.'+str(level_dir)+' '+name_level)
 
 if __name__ == "__main__":
-    directory_zip = "/home/mahs/Escritorio/DEV/base_taxonomia/FileZip/"
+    directory_zip = "/home/alexander/Escritorio/Base_Product/PruebaZip/base_taxonomia/FileZip/"
     ruta_zip = directory_zip+"libsndfile.zip"
-    ruta_extraccion = "/home/mahs/Escritorio/DEV/base_taxonomia/UnFileZip/"
+    ruta_extraccion = "/home/alexander/Escritorio/Base_Product/PruebaZip/base_taxonomia/UnFileZip/"
     password = None
     name=ruta_zip.split('/')[-1]
     foldername = name.split('.')[0]
