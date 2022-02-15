@@ -22,3 +22,13 @@ class Taxonomia(models.Model):
 
     def __str__(self) -> str:
         return 'id: %s FILE: %s LEVEL: %s LEVEL_FATHER: %s' % (self.id, self.file, self.level, self.levelfather)
+
+    '''modelo para la transcripción de minuto a minuto de los audios y videos'''
+class MinuteToMinute(models.Model):
+    fileId = models.ForeignKey(Taxonomia, on_delete=models.CASCADE)
+    minuteAudio = models.IntegerField(blank=True)
+    sourceText = models.TextField(blank=True)
+    finalText = models.TextField(blank=True)
+
+    def __str__(self) -> str:
+        return 'id: %s  minuteAudio' % (self.fileId, self.minuteAudio)

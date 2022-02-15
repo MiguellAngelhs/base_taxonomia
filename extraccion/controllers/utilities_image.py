@@ -6,9 +6,7 @@ load_dotenv()
 pathcreated = os.getenv('DIR_TRANCRIPTION')
 
 def image2text(path):
-
     text =''
-    #for img in imagenes_png:
     text += pytesseract.image_to_string(path) # extract text
 
     replacements = (

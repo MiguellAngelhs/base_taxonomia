@@ -12,3 +12,9 @@ class TaxonomySerializer(serializers.ModelSerializer ):
     class Meta:
         model = Taxonomia
         fields = '__all__'
+
+
+class MinuteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MinuteToMinute
+        fields = '__all__'
