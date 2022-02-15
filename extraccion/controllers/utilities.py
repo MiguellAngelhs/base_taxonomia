@@ -24,11 +24,8 @@ def validatepdf(path):
         os.mkdir(directorio)
     except OSError:
         pass
-        #print("La creación del directorio %s falló" % directorio)
     else:
         pass
-        #print("Se ha creado el directorio: %s " % directorio)
-    #open the fitz file
     pdf = fitz.open(path)
 
     #select the page number
@@ -78,7 +75,6 @@ def get_pdf_searchable_pages(path):
                 return text
             else:
                 text = pdf2text(path)
-                #print(text)
                 return text
             
         else:                
@@ -99,10 +95,8 @@ def text_of_pdf_nonsearchable(path):
         os.mkdir(directorio)
     except OSError:
         pass
-        #print("La creación del directorio %s falló" % directorio)
     else:
         pass
-        #print("Se ha creado el directorio: %s " % directorio)
     pages = convert_from_path(path, 350)
     i = 1
     for page in pages:
@@ -113,7 +107,7 @@ def text_of_pdf_nonsearchable(path):
     for i in range(0,7): 
                     imagenes_png = [archivo for archivo in os.listdir(pathcreated+name) if archivo.endswith(".jpeg")]
                     imagenes_png.sort() 
-    #print(imagenes_png)
+ 
     text =''
     for img in imagenes_png:
         text += pytesseract.image_to_string(pathcreated+name+'/'+img) # extract text
@@ -146,14 +140,9 @@ def pdf2text(path):
     except OSError as e:
         print(f"Error:{ e.strerror}")
     text = ""
-    #path = '/home/alexander/Escritorio/Base_Product/PruebaZip/pdfnotsearchable/gaceta_07.pdf'
     file_data = parser.from_file(path)
     text = file_data['content']
-    # if not text:
-    #     text=text_of_pdf_nonsearchable(path)
-    #     return text
-        
-    # else:
+    
     return text
     
 def getnumberpages(path):

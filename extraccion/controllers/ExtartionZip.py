@@ -6,6 +6,7 @@ from extraccion.serializer import *
 from extraccion.controllers.utilities import *
 from extraccion.controllers.utilities2doc import *
 from extraccion.controllers.utilities_image import *
+from extraccion.controllers.utilities_audio import *
 from dotenv import load_dotenv
 load_dotenv()
 File = os.getenv('DIR_EXTRACTION')
@@ -39,19 +40,14 @@ def taxonomy(file, level):
             Files_dir = [file+'/'+archivo for archivo in os.listdir(file+'/') if archivo.endswith("")]
             Files_dir.sort()
     level_dir = level+1
-    #print(Files_dir, 'este es el primer nivel')
     for k in Files_dir:
         a = Taxonomia.objects
         name_level = k.split('/')[-1]
         name_level_father = k.split('/')[-2]
         directory = k.replace(File, '')
-        # print(name_level_father)
-        # print(type(name_level))
         level_basic = level_dir-2
         if os.path.isdir(k):
             file_type ='folder'
-            #print(os.path.isdir(k))
-            #name_level = k.split('/')[-1]
             if level_basic >= 0:
                 print(" "*level_dir+' '+str(level_basic)+'.'+str(level_dir-1)+'.'+str(level_dir)+' '+name_level)
                 n = Taxonomia.objects.filter(file=name_level_father)
@@ -77,6 +73,7 @@ def taxonomy(file, level):
             text=''
             numpages = 0
             number_word=0
+            minute = False
 
             if extention in extention_document:
                 file_type = 'Document'
@@ -95,8 +92,14 @@ def taxonomy(file, level):
 
             elif extention in extention_audio:
                 file_type = 'Audio'
+                text,array,minute = apiAudio(k)
+                number_word = len(text.split())
+                
             elif extention in extention_video:
                 file_type = 'Video'
+                text,array,minute = apiAudio(k)
+                number_word = len(text.split())
+                
             else:
                 file_type = 'Other file'
             
@@ -108,6 +111,10 @@ def taxonomy(file, level):
                 a.create(file=name_level, level=level_dir, levelfather = level_ftaher,
                 typefile=file_type, directory='./'+directory,numpages = numpages, 
                 transcription = text, numwords = number_word)
+                if minute is True:
+                    idfull = Taxonomia.objects.last().id
+                    mintomin(array, int(idfull))
+
             else:
                 print(" "*level_dir+' '+str(level_dir-1)+'.'+str(level_dir)+' '+name_level)
                 n = Taxonomia.objects.filter(file=name_level_father)
@@ -116,4 +123,9 @@ def taxonomy(file, level):
                 a.create(file=name_level, level=level_dir, levelfather = level_ftaher,
                 typefile=file_type, directory='./'+directory,numpages = numpages, 
                 transcription = text, numwords = number_word)
+                if minute is True:
+                    idfull = Taxonomia.objects.last().id
+                    mintomin(array, int(idfull))
+
+
 
