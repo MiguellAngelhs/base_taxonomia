@@ -8,6 +8,8 @@
 - python manage.py makemigrations;
 - python manage.py migrate; 
 - python manage.py createsuperuser;
+- python3 -m pip install --upgrade pip
+- python3 -m pip install --upgrade Pillow
 
 # .env
 - Crear archivo .env

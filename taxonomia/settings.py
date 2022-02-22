@@ -86,8 +86,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'pb_taxonomia',
-        'USER': 'root',
-        'PASSWORD': 'Mahs2543_',
+        'USER': 'sammy',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '3306',
     }
