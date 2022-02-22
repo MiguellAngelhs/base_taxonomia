@@ -10,7 +10,7 @@ class UploadZip(models.Model):
 
 class Taxonomia(models.Model):
 
-    file = models.CharField(max_length=50, null=True, blank=True)
+    file = models.CharField(max_length=255, null=True, blank=True)
     level = models.IntegerField()
     levelfather = models.IntegerField(null=True, blank=True)
     typefile = models.CharField(max_length=50, null=True, blank=True)
