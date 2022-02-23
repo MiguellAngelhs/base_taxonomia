@@ -5,22 +5,159 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+        background: #a3a4a5;
+        }
+        .new{
+        background: #080808;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1820px;
+        height: 50px;
+        }
+        .centrar{
+            background: #fefeff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1820px;
+        }
+        .result{
+            text-align: center;
+            background: #a3a4a5;
+            margin: 0.5%;
+            margin-left:0px;
+            width: 1820px;
+            font-style: oblique;
+        }
+        .file{
+            background: #fefeff;
+            margin: 0.5%;
+            margin-left:0px;
+            width: 1820px;
+            font-style: oblique;
+        }
+        .heading { color: #faf6f6; }
+        .archivo{
+            text-align: center;
+            background: #fefeff;
+            width: 1820px;
+            font-style: oblique;
+        }
+        .transcription{
+            text-align: justify;
+            background: #fefeff;
+            width: 1750px;
+            font-style: oblique;
+            font-style: inherit;
+        }
+                .container-4{
+            overflow: hidden;
+            width: 300px;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .container-4 input#search{
+            width: 300px;
+            height: 50px;
+            background: #2b303b;
+            border: none;
+            font-size: 10pt;
+            float: left;
+            color: #fff;
+            padding-left: 15px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .container-4 input#search::-webkit-input-placeholder {
+            color: #65737e;
+        }
+        
+        .container-4 input#search:-moz-placeholder { /* Firefox 18- */
+            color: #65737e;  
+        }
+        
+        .container-4 input#search::-moz-placeholder {  /* Firefox 19+ */
+            color: #65737e;  
+        }
+        
+        .container-4 input#search:-ms-input-placeholder {  
+            color: #65737e;  
+        }
+
+        .container-4 button.icon{
+            -webkit-border-top-right-radius: 5px;
+            -webkit-border-bottom-right-radius: 5px;
+            -moz-border-radius-topright: 5px;
+            -moz-border-radius-bottomright: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        
+            border: none;
+            background: #232833;
+            height: 50px;
+            width: 50px;
+            color: #4f5b66;
+            opacity: 0;
+            font-size: 10pt;
+        
+            -webkit-transition: all .55s ease;
+            -moz-transition: all .55s ease;
+            -ms-transition: all .55s ease;
+            -o-transition: all .55s ease;
+            transition: all .55s ease;
+        }
+        .container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon{
+            outline: none;
+            opacity: 1;
+            margin-left: -50px;
+        }
+        
+        .container-4:hover button.icon:hover{
+            background: white;
+        }
+    </style>
 </head>
 <body>
-    <form>
+    <!-- <form>
         <input type="text" name="q">
         <button>Search</button>
-    </form>
+    </form> -->
+    <div class="new">
+    
+        <div class="container-4">
+            <form>
+                <input type="text" name="q">
+                <button>Search</button>
+            </form>
+       
+    </div>
+    </div>
     {% if File %}
-    Results: {{ File|length }}
+    <div class="result">
+    <h3 class="heading"> Results: {{ File|length }} </h3>
+    </div>
     {% endif %}
     {% for fil in File %}
-        <a><h1>Archivo: {{ fil.file }}</h1></a>
-        <h2>ID: {{ fil.id|safe }} </h2>
-        <h3>Directorio: {{ fil.directory|safe }}</h3>
-        <h5>Transcripción</h5>
-        <h6>{{ fil.transcription|safe }}</h6>
-        {{ fil.rank }}
+        <div class="file">
+            <div class="archivo">
+                <a><h1 >Archivo: {{ fil.file }}</h1></a>
+                <h2>ID: {{ fil.id|safe }} </h2>
+                <h3>Directorio: {{ fil.directory|safe }}</h3>
+                <h5>Transcripción</h5>
+            </div>
+        <div class="centrar">
+            <div class="transcription">
+                <h6>{{ fil.transcription|safe }}</h6>
+                {{ fil.rank }}
+            </div>
+        </div>
+        </div>
     {% endfor %}
     
 </body>
