@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="q">
+        <button>Search</button>
+    </form>
+    {% if File %}
+    Results: {{ File|length }}
+    {% endif %}
+    {% for fil in File %}
+        <a><h1>Archivo: {{ fil.file }}</h1></a>
+        <h2>ID: {{ fil.id|safe }} </h2>
+        <h3>Directorio: {{ fil.directory|safe }}</h3>
+        <h5>Transcripción</h5>
+        <h6>{{ fil.transcription|safe }}</h6>
+        {{ fil.rank }}
+    {% endfor %}
+    
+</body>
+</hobjecttml>

@@ -9,6 +9,10 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.views import Response
 from extraccion.controllers.ExtartionZip import *
+from extraccion.controllers.search import *
+from django.shortcuts import render
+from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank, SearchHeadline, TrigramSimilarity
+
 
 
 from dotenv import load_dotenv
@@ -19,6 +23,24 @@ PROJECT_PATH = os.getenv("FILEZIP")
 load_dotenv()
 File = os.getenv('DIR_EXTRACTION')
 #site.addsitedir(File)
+
+
+def index(request):
+    q = request.GET.get('q')
+
+    if q:
+        l = search(q)
+        print(l)
+        context = {'File' :l}
+        return render(request, 'template/example/index.html', context)
+        
+        
+    else:
+        files = None
+        context = {'File' :files}
+
+        return render(request, 'template/example/index.html', context)
+
 
 
 class FileZipViewSet(viewsets.ModelViewSet):

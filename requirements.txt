@@ -12,9 +12,9 @@ configparser==5.2.0
 cryptography==36.0.1
 Django==4.0.2
 djangorestframework==3.13.1
+docx==0.2.4
 etelemetry==0.3.0
 filelock==3.4.2
-fitz==0.0.1.dev2
 future==0.18.2
 google-api-core==2.5.0
 google-auth==2.6.0
@@ -46,6 +46,7 @@ pathlib==1.0.1
 pdf2image==1.16.0
 pdfminer.six==20211012
 Pillow==9.0.1
+pkg_resources==0.0.0
 proto-plus==1.20.0
 protobuf==3.19.4
 prov==2.0.0
@@ -80,6 +81,6 @@ six==1.16.0
 sqlparse==0.4.2
 tika==1.24
 traits==6.3.2
-typing-extensions==4.1.1
 typing-inspect==0.7.1
+typing_extensions==4.1.1
 urllib3==1.26.8
